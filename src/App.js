@@ -5,8 +5,15 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      monsters: []
+      monsters: [],
+      searchTerm: ""
     }
+  }
+
+  onInputChange = (input) => {
+    this.setState({
+      searchTerm: input.target.value
+    })
   }
 
   componentDidMount = () => {
@@ -16,9 +23,10 @@ class App extends Component {
   }
 
   render(){
+    console.log(this.state.searchTerm)
     return (
       <div className="App">
-        <input />  
+        <input type="text" placeholder="Search Monsters" onChange={this.onInputChange} />  
         <CardList monsters={this.state.monsters}/>
           
       </div>
