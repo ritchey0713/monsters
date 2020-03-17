@@ -3,9 +3,13 @@ import React from "react"
 const Card = (props) => {
   return (
     <div className="card-container">
-      <h1  key={ props.monster.id }>
+      <img alt="monster" src={`https://robohash.org/${props.monster.id}?set=set2=180x180`}/>
+      <h2  key={ props.monster.id }>
         { props.monster.name }
-      </h1>
+      </h2>
+      <p>
+        {props.monster.email}
+      </p>
 
     </div>
   )
