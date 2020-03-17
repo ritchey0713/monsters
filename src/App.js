@@ -3,13 +3,14 @@ import CardList from "./components/card-list/CardList"
 import SearchBox from './components/search-box/SearchBox';
 
 class App extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       monsters: [],
       searchTerm: "",
       title: ""
     }
+    this.props = props
   }
 
   onInputChange = (e) => {
