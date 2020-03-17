@@ -10,9 +10,9 @@ class App extends Component {
     }
   }
 
-  onInputChange = (input) => {
+  onInputChange = (e) => {
     this.setState({
-      searchTerm: input.target.value
+      searchTerm: e.target.value
     })
   }
 
@@ -22,13 +22,18 @@ class App extends Component {
     .then(users => this.setState({ monsters: users }))
   }
 
+  getMonsters = () => {
+    const { monsters, searchTerm } = this.state
+    return monsters.filter(monster => {
+      return monster.name.toLowerCase().includes(searchTerm.toLowerCase())
+    })
+  }
+
   render(){
-    console.log(this.state.searchTerm)
     return (
       <div className="App">
         <input type="text" placeholder="Search Monsters" onChange={this.onInputChange} />  
-        <CardList monsters={this.state.monsters}/>
-          
+        <CardList monsters={this.getMonsters()} searchTerm={this.state.searchTerm}/>
       </div>
     );
   }
